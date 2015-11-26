@@ -1,6 +1,6 @@
 # [Blog] Sécuriser une API REST et CORS compatible avec JSON Web Token (JWT)
 
-Ce dépôt contient le code source d'une API REST, CORS compatible et sécurisée illustrant un [article de mon blog]().
+Ce dépôt contient le code source d'une API REST, CORS compatible et sécurisée illustrant un [article de mon blog](http://blog.inovia-conseil.fr/?p=236).
 
 Les comptes utilisateurs sont stockés via le service de gestion d'identité [**Stormpath**](https://stormpath.com/).<br/>
 Le code de l'application utilise par défaut une application *Stormpath* que j'ai créée à des fins de test, et que vous pouvez  utiliser librement. Les comptes disponibles sont les suivants :
