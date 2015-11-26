@@ -14,9 +14,14 @@
     "url": "http://blog.inovia-conseil.fr"
   },
   "homepage": "https://github.com/ksahnine/jwt-secured-api-node",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ksahnine/jwt-secured-api-node.git"
+  },
   "scripts": {
     "start": "export DEBUG=app && node ./bin/www"
   },
+  "license": "MIT",
   "dependencies": {
     "body-parser": "~1.12.4",
     "cors": "^2.7.1",
