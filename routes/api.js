@@ -14,8 +14,8 @@ var corsOptions = {
    "preflightContinue": false
 };
 
-// Login 
-router.options('/authenticate', cors()); 
+// Authentification Stormpath + génération jeton JWT
+router.options('/authenticate', cors());  // Prefight request
 router.post('/authenticate', cors(corsOptions), function(req, res, next) {
     passport.authenticate('stormpath', function(err, user, info) {
         if (err) { 
@@ -26,6 +26,8 @@ router.post('/authenticate', cors(corsOptions), function(req, res, next) {
                 res.status(500);
                 return res.json( {status: 'error', msg: info.message} );
             } else {
+                // Le profil de l'utilisateur est utilisé pour constituer
+                // la charge utile du jeton JWT
                 var profile = { username: user.username, fullName: user.fullName, email: user.email };
                 var token = jwt.sign(profile, config.jwt.secret, { expiresIn: config.jwt.expiresInSeconds });
                 return res.json( {status: 'ok', token: token} );
@@ -34,10 +36,10 @@ router.post('/authenticate', cors(corsOptions), function(req, res, next) {
     })(req, res, next);
 });
 
-// Liste des comptes
-router.options('/restricted/accounts', cors()); 
+// Retour la liste des comptes
+router.options('/restricted/accounts', cors());  // Preflight request
 router.get('/restricted/accounts', cors(corsOptions), function(req, res, next) {
-    debug(req.user);
+    debug(req.user); // Charge utile contenue dans le jeton
     // Génération de 5 comptes
     var accounts = _.map(_.range(5), function(id){ return {id: id, name: "Account " + id}; });
     res.json(accounts);
