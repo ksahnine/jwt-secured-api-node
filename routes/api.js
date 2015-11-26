@@ -36,7 +36,7 @@ router.post('/authenticate', cors(corsOptions), function(req, res, next) {
     })(req, res, next);
 });
 
-// Retour la liste des comptes
+// Retourne la liste des comptes
 router.options('/restricted/accounts', cors());  // Preflight request
 router.get('/restricted/accounts', cors(corsOptions), function(req, res, next) {
     debug(req.user); // Charge utile contenue dans le jeton
